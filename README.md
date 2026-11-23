@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Studio. — Landing page
 
-## Getting Started
+Bilingual (Mongolian / English) landing page for a studio that builds mobile apps and websites for clients in Mongolia.
 
-First, run the development server:
+<!-- Screenshot: save one as docs/screenshot.png, then uncomment the line below. -->
+<!-- ![Studio. landing page](docs/screenshot.png) -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech stack
+
+- **Next.js 16** (App Router, Cache Components) + **TypeScript**
+- **Tailwind CSS v4** — design tokens live in `src/app/globals.css`
+- **Motion** (Framer Motion) for scroll-linked animation, **Lenis** for smooth scrolling
+- **zod** + **Resend** for the contact form
+- **Vercel Analytics**, deployed on **Vercel**
+
+## Project structure
+
+```
+src/
+├─ app/           routes: /[locale] page + layout, api/contact, sitemap, robots, OG image
+├─ components/
+│  ├─ sections/   page sections (Hero, Services, Portfolio, Contact, Footer…)
+│  ├─ ui/         buttons, cards, form fields, icons
+│  ├─ motion/     reveal components (FadeUp, RiseWords, ScrollWord…)
+│  └─ providers/  SmoothScroll (Lenis)
+├─ content/       all copy: mn.ts (default), en.ts, site.ts (contact details)
+├─ hooks/         scroll progress, media queries, magnetic hover
+├─ lib/           helpers: motion tokens, contact schema, theme, fonts
+└─ proxy.ts       / → /mn or /en from Accept-Language; 404 for unknown locales
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All text is in `src/content/`. Values in `[brackets]` are placeholders still to be filled in.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Getting started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Requires Node.js 20+.
 
-## Learn More
+```bash
+npm install
+cp .env.example .env.local   # then fill in the values below
+npm run dev                  # http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+Without `RESEND_API_KEY`, the contact form still works in development and logs submissions to the terminal instead of sending them.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command          | What it does                                     |
+| ---------------- | ------------------------------------------------ |
+| `npm run dev`    | Start the dev server                             |
+| `npm run build`  | Production build                                 |
+| `npm start`      | Serve the production build                       |
+| `npm run check`  | Type-check, lint (0 warnings) and Prettier check |
+| `npm run format` | Format everything with Prettier                  |
+
+## Environment variables
+
+| Variable               | Required   | Description                                                                                 |
+| ---------------------- | ---------- | ------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | Production | Public URL, no trailing slash (canonical links, sitemap, OG). Falls back to the Vercel URL. |
+| `RESEND_API_KEY`       | Production | API key from [resend.com](https://resend.com/api-keys).                                     |
+| `CONTACT_TO_EMAIL`     | Production | Inbox that receives contact form messages.                                                  |
+| `CONTACT_FROM_EMAIL`   | No         | Sender. Defaults to `Studio. <onboarding@resend.dev>`.                                      |
+
+> **Resend test sender:** until your domain is verified in Resend, keep the default `onboarding@resend.dev` sender. It can only deliver to the email address of your Resend account, so `CONTACT_TO_EMAIL` must be that address. After verifying your domain, set `CONTACT_FROM_EMAIL` to e.g. `Studio. <hello@yourdomain.mn>`.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Import this repository at [vercel.com/new](https://vercel.com/new) — the Next.js preset is detected automatically.
+2. Add the environment variables above under **Settings → Environment Variables**.
+3. Deploy. Every push to `main` redeploys; pull requests get preview URLs.
+4. Custom domain: add it under **Settings → Domains**, then set `NEXT_PUBLIC_SITE_URL` to it and redeploy.
+5. Turn on **Analytics** in the Vercel project to collect page views.
