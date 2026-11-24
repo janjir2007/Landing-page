@@ -105,7 +105,7 @@ export function PortfolioPinned({ t }: Props) {
         >
           {t.items.map((item, i) => (
             <li key={item.name} data-index={i} className={CARD}>
-              <ProjectCard item={item} index={i} className="size-full" />
+              <ProjectCard item={item} labels={t} className="size-full" />
             </li>
           ))}
           <li data-index={t.items.length} className={CARD}>

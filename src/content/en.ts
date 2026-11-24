@@ -95,20 +95,25 @@ const en: Dictionary = {
     title: "Recent projects",
     progressLabel: "Project scroll progress",
     carouselLabel: "Projects — swipe sideways",
+    visit: "Visit site",
+    newTab: "opens in a new tab",
     items: [
       {
+        slug: "prime",
         name: "PRIME",
         category: "[Mobile app]",
         year: "[2025]",
         summary: "[Short project description]",
       },
       {
+        slug: "nandinmeat",
         name: "NandinMeat",
         category: "[Website]",
         year: "[2025]",
         summary: "[Short project description]",
       },
       {
+        slug: "nandin-dursamj",
         name: "Нандин Дурсамж",
         category: "[Website]",
         year: "[2024]",

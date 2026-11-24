@@ -3,6 +3,9 @@
  * `en.ts` is type-checked against this file, so every key must exist in both.
  * Keep [bracketed] values as placeholders until real content is ready.
  */
+
+import type { ProjectSlug } from "./site";
+
 const mn = {
   meta: {
     title: "Studio. — Мобайл апп ба вэб сайт хөгжүүлэлт",
@@ -93,20 +96,25 @@ const mn = {
     title: "Сүүлийн үеийн ажлууд",
     progressLabel: "Төслүүдийн гүйлгэлтийн явц",
     carouselLabel: "Төслүүд — хажуу тийш гүйлгэнэ үү",
+    visit: "Сайт үзэх",
+    newTab: "шинэ цонхонд нээгдэнэ",
     items: [
       {
+        slug: "prime" as ProjectSlug,
         name: "PRIME",
         category: "[Мобайл апп]",
         year: "[2025]",
         summary: "[Төслийн товч тайлбар]",
       },
       {
+        slug: "nandinmeat" as ProjectSlug,
         name: "NandinMeat",
         category: "[Вэб сайт]",
         year: "[2025]",
         summary: "[Төслийн товч тайлбар]",
       },
       {
+        slug: "nandin-dursamj" as ProjectSlug,
         name: "Нандин Дурсамж",
         category: "[Вэб сайт]",
         year: "[2024]",

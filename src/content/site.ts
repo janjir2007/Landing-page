@@ -19,3 +19,20 @@ export const sectionIds = {
   faq: "faq",
   contact: "contact",
 } as const;
+
+/**
+ * Live portfolio sites. Screenshots live in /public/work as
+ * `<slug>-desktop.webp` (1440×900) and `<slug>-mobile.webp` (390×844 @2x).
+ */
+export const projects = {
+  prime: { url: "https://prime.mn/" },
+  nandinmeat: { url: "https://nandinmeat.mn/" },
+  "nandin-dursamj": { url: "https://nandindursamj.mn/" },
+} as const;
+
+export type ProjectSlug = keyof typeof projects;
+
+export const projectShots = (slug: ProjectSlug) => ({
+  desktop: `/work/${slug}-desktop.webp`,
+  mobile: `/work/${slug}-mobile.webp`,
+});

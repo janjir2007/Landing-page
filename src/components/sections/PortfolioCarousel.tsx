@@ -24,9 +24,9 @@ export function PortfolioCarousel({ t }: Props) {
         className="flex snap-x snap-mandatory scroll-px-[var(--gutter)] overflow-x-auto overscroll-x-contain px-[var(--gutter)] pb-4"
       >
         <ul className="flex gap-4">
-          {t.items.map((item, i) => (
+          {t.items.map((item) => (
             <li key={item.name} className={CARD}>
-              <ProjectCard item={item} index={i} className="size-full" />
+              <ProjectCard item={item} labels={t} className="size-full" />
             </li>
           ))}
           <li className={CARD}>
