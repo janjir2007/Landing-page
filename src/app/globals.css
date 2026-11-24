@@ -6,7 +6,8 @@
   --color-surface: #121214;
   --color-border: #1f1f23;
   --color-fg: #f4f4f5;
-  --color-muted: #8a8a93;
+  /* 7.1:1 on bg, 6.7:1 on surface — lightened from #8a8a93 so small grey text holds up on iOS */
+  --color-muted: #9a9aa3;
   --color-accent: #c6f432;
   --color-accent-fg: #0a0a0b;
   /* Form errors only (~7:1 on bg) */
@@ -14,6 +15,11 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Small text (≤ 14px) defaults to 500: Inter 400 reads too thin there on iOS,
+     where light-on-dark text gets no stem darkening. Explicit font-* classes still win. */
+  --text-sm--font-weight: 500;
+  --text-xs--font-weight: 500;
 
   /* Fluid type scale (min @ 360px → max @ 1440px) */
   --text-eyebrow: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
@@ -47,14 +53,22 @@
     background: var(--color-bg);
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    /* Every weight we use exists in the variable fonts — never fake bold/italic. */
+    font-synthesis: none;
   }
 
+  /* No global font smoothing: `antialiased` thins body text on macOS (iOS ignores
+     the property). It's applied only to large headings below and via `antialiased`. */
   body {
     background: var(--color-bg);
     color: var(--color-fg);
     font-family: var(--font-sans);
     font-size: var(--text-body);
     line-height: 1.6;
+  }
+
+  h1,
+  h2 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

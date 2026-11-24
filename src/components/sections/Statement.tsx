@@ -34,7 +34,7 @@ export function Statement({ t }: Props) {
         <FadeUp className="shell py-24 sm:py-32 lg:py-0">
           <FadeUpItem
             as="p"
-            className="font-display text-statement leading-[1.08] font-bold tracking-[-0.05em] text-balance"
+            className="font-display text-statement leading-[1.08] font-bold tracking-[-0.05em] text-balance antialiased"
           >
             {words.map((word, i) => {
               const [a, b] = staggerRange(i, words.length, STATEMENT.overlap);

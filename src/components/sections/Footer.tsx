@@ -88,7 +88,7 @@ export async function Footer({ t, nav, channels }: Props) {
           <FadeUpItem>
             <p
               aria-hidden
-              className="font-display text-wordmark leading-[0.8] font-extrabold tracking-[-0.05em] whitespace-nowrap select-none"
+              className="font-display text-wordmark leading-[0.8] font-extrabold tracking-[-0.05em] whitespace-nowrap antialiased select-none"
             >
               {word}
               <span className="text-accent">.</span>

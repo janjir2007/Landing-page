@@ -25,7 +25,7 @@ type Props = {
 };
 
 /**
- * Desktop pinned services. 300vh = 1 screen of layout + 2 screens of pin (~0.5 screen per step).
+ * Desktop pinned services. 250vh = 1 screen of layout + 1.5 screens of pin (~0.3 screen per step).
  * Steps switch at SERVICES.stepStarts, leaving step 04 a hold before release. The active step
  * is discrete; the phone screen cross-fades and the text panel slides in the
  * scroll direction (panels before the active one sit above, after sit below).
@@ -42,7 +42,7 @@ export function ServicesPinned({ t }: Props) {
   const slide = { duration: SERVICES.textDuration, ease: EASE_OUT_EXPO };
 
   return (
-    <div ref={ref} className="relative h-[300vh]">
+    <div ref={ref} className="relative h-[250vh]">
       <div className="sticky top-0 flex h-svh items-center pt-[var(--nav-h)]">
         <div className="shell grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-12 xl:gap-20">
           <div className="flex flex-col gap-8">

@@ -60,14 +60,14 @@ export const MENU = {
 } as const;
 
 /**
- * Pinned services (2 screens of pin — `h-[300vh]` in ServicesPinned).
+ * Pinned services (1.5 screens of pin — `h-[250vh]` in ServicesPinned).
  * Step changes are discrete; the timings below animate between them.
  */
 export const SERVICES = {
   /** Pin progress at which each step becomes active. Step 01 also shows before its start. */
-  stepStarts: [0.08, 0.3, 0.52, 0.75],
+  stepStarts: [0.05, 0.25, 0.45, 0.65],
   /** Length of each step's fill line; the last step fills early, then holds until release. */
-  stepSpan: 0.22,
+  stepSpan: 0.2,
   screenFade: 0.5,
   textDuration: 0.6,
   /** Text panels slide this far in the scroll direction. */

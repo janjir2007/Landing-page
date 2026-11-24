@@ -7,6 +7,6 @@ export const colors = {
   surface: "#121214",
   border: "#1F1F23",
   fg: "#F4F4F5",
-  muted: "#8A8A93",
+  muted: "#9A9AA3",
   accent: "#C6F432",
 } as const;
