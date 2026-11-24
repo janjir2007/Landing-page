@@ -165,9 +165,10 @@ const en: Dictionary = {
     eyebrow: "Team",
     title: "The people behind your project",
     members: [
-      { name: "[Name]", role: "[Designer]", bio: "[Short bio]" },
-      { name: "[Name]", role: "[Developer]", bio: "[Short bio]" },
-      { name: "[Name]", role: "[Project manager]", bio: "[Short bio]" },
+      { name: "Ganbat", role: "CEO" },
+      { name: "Munhu", role: "Senior IT Engineer" },
+      { name: "Buyna", role: "Project Manager" },
+      { name: "Sanchir", role: "Full-Stack Engineer" },
     ],
   },
 

@@ -14,10 +14,13 @@ export function Team({ t }: Props) {
     <section aria-labelledby="team-title" className="border-t border-border">
       <div className="shell flex flex-col gap-14 py-24 sm:py-32">
         <SectionHeader id="team-title" eyebrow={t.eyebrow} title={t.title} />
-        <FadeUp as="ul" className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 2×2 on mobile/tablet, 4 across on desktop. */}
+        <FadeUp
+          as="ul"
+          className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4"
+        >
           {t.members.map((member, i) => (
-            // Members are placeholders with identical names for now, so key by index.
-            <FadeUpItem as="li" key={i}>
+            <FadeUpItem as="li" key={member.name}>
               <TeamCard member={member} index={i} />
             </FadeUpItem>
           ))}

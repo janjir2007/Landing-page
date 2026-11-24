@@ -7,11 +7,12 @@ type Props = {
   index: number;
 };
 
-/** Portrait placeholder tints (token colours only) until real photos arrive. */
+/** Portrait placeholder tints (token colours only) until real photos arrive — one per member. */
 const portrait = [
   "bg-linear-to-br from-accent/20 via-surface to-surface",
   "bg-linear-to-b from-fg/10 via-surface to-surface",
   "bg-linear-to-tr from-accent/10 via-border to-surface",
+  "bg-radial-[at_70%_15%] from-fg/10 via-surface to-surface",
 ];
 
 export function TeamCard({ member, index }: Props) {
@@ -31,7 +32,6 @@ export function TeamCard({ member, index }: Props) {
       <div className="flex flex-col gap-1">
         <h3 className="font-display text-xl font-bold tracking-[-0.03em]">{member.name}</h3>
         <p className="text-sm font-medium text-fg/75">{member.role}</p>
-        <p className="pt-2 text-sm text-muted">{member.bio}</p>
       </div>
     </article>
   );
